@@ -8,23 +8,31 @@ export default {
   },
   data() {
     return {
-      songs: []
+      songs: [],
+      isEditingForm: false
     }
   },
   async created() {
     const snapshot = await songsCollection.where('uid', '==', auth.currentUser.uid).get()
-    snapshot.forEach((document) => {
-      const song = {
-        ...document.data(),
-        docId: document.id
-      }
-      this.songs.push(song)
-    })
+    snapshot.forEach(this.addSongToUserSongs)
   },
   methods: {
     updateSong(i, values) {
       this.songs[i].modified_name = values.modified_name
       this.songs[i].genre = values.genre
+    },
+    removeSong(i) {
+      this.songs.splice(i, 1)
+    },
+    addSongToUserSongs(document) {
+      const song = {
+        ...document.data(),
+        docId: document.id
+      }
+      this.songs.push(song)
+    },
+    updateIsEditingForm(value) {
+      this.isEditingForm = value
     }
   }
 }
@@ -44,6 +52,8 @@ export default {
         :index="idx"
         v-for="(song, idx) in songs"
         :key="song.docId"
+        :removeSong="removeSong"
+        :updateIsEditingForm="updateIsEditingForm"
       />
     </div>
   </div>
