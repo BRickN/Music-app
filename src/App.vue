@@ -29,11 +29,11 @@ export default {
 
   <!-- view router registers this component. The router renders the route component here-->
   <router-view v-slot="{ Component, route }">
-    <transition name="fade" mode="out-in">
-      <div :key="route.name">
-        <component :is="Component"></component>
-      </div>
-    </transition>
+    <!-- <transition name="fade" mode="out-in"> -->
+    <div :key="route.name">
+      <component :is="Component"></component>
+    </div>
+    <!-- </transition> -->
   </router-view>
 
   <app-player />

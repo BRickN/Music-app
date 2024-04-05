@@ -28,6 +28,7 @@ export default defineStore('player', {
             })
         },
         async toggleAudio() {
+            console.log('toggle')
             if (!this.sound.playing) {
                 return
             }

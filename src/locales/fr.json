@@ -1,0 +1,8 @@
+{
+  "home": {
+    "listen": "Baguette!"
+  },
+  "song": {
+    "comment_count": "{count} baguettes"
+  }
+}

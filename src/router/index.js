@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '@/views/HomeView.vue';
-import About from '@/views/AboutView.vue';
-import Manage from '@/views/ManageView.vue';
-import Song from '@/views/SongView.vue';
-import NotFound from '@/views/NotFound.vue';
 import useUserStore from '@/stores/user';
+
+//chunks: dont render all components in the bundle at once but only when a user navigates to the page
+const Home = () => import('@/views/HomeView.vue')
+const About = () => import('@/views/AboutView.vue')
+const Manage = () => import('@/views/ManageView.vue')
+const Song = () => import('@/views/SongView.vue')
+const NotFound = () => import('@/views/NotFoundView.vue')
+
 
 const routes = [
   {
