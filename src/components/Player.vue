@@ -22,7 +22,7 @@ export default {
     </div>
     <div class="flex flex-nowrap gap-4 items-center">
       <!-- Play/Pause Button -->
-      <button type="button" @click.prevent="toggleAudio">
+      <button type="button" @click.prevent="toggleAudio" id="player-play-btn">
         <i class="fa text-gray-500 text-xl" :class="playing ? 'fa-pause' : 'fa-play'"></i>
       </button>
       <!-- Current Position -->
